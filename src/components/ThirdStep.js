@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 import csc from 'country-state-city'
 import axios from 'axios'
 import { BASE_API_URL } from '../utils/constants'
-
+import {motion} from 'framer-motion'
 
 
 export default function ThirdStep(props) {
@@ -98,7 +98,11 @@ export default function ThirdStep(props) {
     return (
 
         <Form className="input-form" onSubmit={handleSubmit}>
-            <div className="col-md-6 offset-md-3">
+            <motion.div
+            initial={{x:'-100vw'}}
+            animate={{x:0}}
+            
+            className="col-md-6 offset-md-3">
 
                 <Form.Group controlId="country">
 
@@ -168,7 +172,7 @@ export default function ThirdStep(props) {
                     Register
                 </Button>
 
-            </div>
+            </motion.div>
         </Form>
     )
 }

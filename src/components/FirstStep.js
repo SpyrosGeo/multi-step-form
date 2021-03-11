@@ -1,18 +1,35 @@
 import {useForm } from 'react-hook-form'
 import { Form,Button } from 'react-bootstrap'
+
+import {motion} from 'framer-motion'
+
+
 export default function FirstStep(props) {
-    const { register,handleSubmit, errors} = useForm()
+  const {user} = props;
+
+
+    const { register,handleSubmit, errors} = useForm({
+      defaultValues:{
+        first_name:user.first_name,
+        last_name:user.last_name
+      }
+    })
 
 
     const onSubmit = (data) =>{
-        console.log(data)
+        props.updateUser(data)
         props.history.push('/second')
     }
 
     return (
    
      <Form className="input-form" onSubmit={handleSubmit(onSubmit)}>
-      <div className="col-md-6 offset-md-3">
+      <motion.div 
+      className="col-md-6 offset-md-3"
+     initial={{x:'-100vw'}} 
+     animate={{x:0}}
+      
+      >
         <Form.Group controlId="first_name">
           <Form.Label>First Name</Form.Label>
           <Form.Control
@@ -58,7 +75,7 @@ export default function FirstStep(props) {
                 <Button variant="primary" type="submit">
                     Next
                 </Button>
-            </div>
+            </motion.div>
         </Form>
    
    
