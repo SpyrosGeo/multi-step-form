@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const mongoURI = "mongodb+srv://thatguy:1248@cluster1.cdc7q.mongodb.net/multistep?retryWrites=true&w=majority"
+require('dotenv').config()
+const mongoURI = `mongodb+srv://thatguy:${process.env.DBPASS}@cluster1.cdc7q.mongodb.net/multistep?retryWrites=true&w=majority`
 const options = {
     useNewUrlParser:true,
     useUnifiedTopology:true,
